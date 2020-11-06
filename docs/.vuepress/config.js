@@ -1,5 +1,5 @@
 module.exports = {
-  base:'/ice-ui/',
+  base:'/hhhh/',
   title: 'Ice-UI',
   description: '一个简约、易用的 UI 框架',
   themeConfig: {
@@ -23,13 +23,11 @@ module.exports = {
         collapsable: false, // 可选的, 默认值是 true,
         children: [
           '/components/button',
-          '/components/tabs',
           '/components/input',
           '/components/grid',
           '/components/layout',
           '/components/toast',
-          '/components/collapse',
-          '/components/popover',
+        
         ]
       },
 
