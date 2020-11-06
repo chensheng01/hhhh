@@ -1,0 +1,53 @@
+{
+  "name": "ice-vue-ui",
+  "version": "1.0.0",
+  "description": "一个简易快捷的UI组件库",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "parcel index.html --no-cache",
+    "dev-test": "parcel watch test/* --no-cache & karma start",
+    "test": "parcel build test/* --no-minify && karma start --single-run",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Orange-ice/Ice-UI.git"
+  },
+  "keywords": [
+    "vue",
+    "ui"
+  ],
+  "author": "Burt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Orange-ice/Ice-UI/issues"
+  },
+  "homepage": "https://github.com/Orange-ice/Ice-UI#readme",
+  "dependencies": {
+    "vue": "^2.6.11",
+    "vue-hot-reload-api": "^2.3.4"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.2.0",
+    "chai": "^4.2.0",
+    "chai-spies": "^1.0.0",
+    "karma": "^5.1.1",
+    "karma-chai": "^0.1.0",
+    "karma-chai-spies": "^0.1.4",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-mocha": "^2.0.1",
+    "karma-sinon-chai": "^2.0.2",
+    "mocha": "^8.1.1",
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.3",
+    "sinon": "^9.0.2",
+    "sinon-chai": "^3.5.0",
+    "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.5.3"
+  },
+  "alias": {
+    "vue": "./node_modules/vue/dist/vue.common.js"
+  }
+}
