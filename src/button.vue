@@ -1,32 +1,64 @@
 <template>
-  <button class="g-button" :class="{[`icon-${iconPosition}`]:true}" @click="$emit('click')">
-    <g-icon v-if="icon && !loading" :name="icon" class="icon"></g-icon>
-    <g-icon class="loading icon" v-if="loading" name="loading"></g-icon>
-    <div class="content">
+  <span>
+    <!-- 设置图标在右 -->
+    <button
+      class="g-button"
+      :class="{ right: loading }"
+      v-if="iconPosition == 'right'"
+      @click="x"
+    >
+      <g-icon name="loading" v-if="loading" class="loading"></g-icon>
       <slot></slot>
-    </div>
-  </button>
+      <!-- <svg v-if="icon" class="icon">
+        <use :xlink:href="`#i-${icon}`"></use>
+      </svg> -->
+      <g-icon v-if="icon && !loading" class="icon" :name="icon"></g-icon>
+    </button>
+    <!--设置图标在左边或者没有  -->
+    <button class="g-button" v-else @click="x" :class="[`type-${type}`]">
+      <g-icon name="loading" v-if="loading" class="loading"></g-icon>
+      <g-icon v-if="icon && !loading" class="icon" :name="icon"></g-icon>
+      <slot></slot>
+    </button>
+  </span>
 </template>
 <script>
-import Icon from './icon.vue'   // 全局注册的 Icon 在单元测试时并不可用
+import Icon from "./icon.vue";
 export default {
-  name: 'IceButton',
-  components: {'g-icon': Icon},
+  methods: {
+    x() {
+      this.$emit("click");
+    },
+  },
   props: {
-    icon: {},
+    icon: String,
     loading: {
       type: Boolean,
-      default: false
+      default: false,
+    },
+    type: {
+      type: String,
+      validator(val) {
+        return ["primary", "danger", "success"].includes(val);
+      },
     },
     iconPosition: {
       type: String,
-      default: 'left',
-      validator(value) {
-        return value === 'left' || value === 'right'
-      }
-    }
-  }
-}
+      default: "left",
+      validator(val) {
+        if (val !== "left" && val !== "right") {
+          return false;
+        } else {
+          return true;
+        }
+      },
+    },
+  },
+  components: {
+    "g-icon": Icon,
+  },
+};
+// props: ["icon", "iconPosition"],
 </script>
 <style lang="scss" scoped>
 @import "helper";
@@ -50,7 +82,18 @@ export default {
   justify-content: center;
   align-items: center;
   vertical-align: bottom;
-
+  &.type-primary {
+    background: blue;
+    color: #fff;
+  }
+  &.type-danger {
+    background: rgb(236, 40, 40);
+    color: #fff;
+  }
+  &.type-success {
+    background: rgb(52, 124, 52);
+    color: #fff;
+  }
   &:hover {
     border-color: $border-color-hover;
   }
@@ -71,7 +114,7 @@ export default {
   // 不加行高 文字没法和 icon 对齐，应该是浏览器问题吧...
   > .icon {
     order: 1;
-    margin-right: .1em;
+    margin-right: 0.1em;
   }
 
   &.icon-right {
@@ -82,7 +125,7 @@ export default {
     > .icon {
       order: 2;
       margin-right: 0;
-      margin-left: .1em
+      margin-left: 0.1em;
     }
   }
 

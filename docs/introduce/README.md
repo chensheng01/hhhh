@@ -21,8 +21,6 @@ Orange-UI 是个人学习过程中造出来的 UI 库，如果你在使用过程
 非常感谢你提出宝贵意见。
 PS：目前项目属于开发中，暂不建议在生产项目中使用。
 
-### 作者
+### 联系我
 
-- Burt
-- 联系方式：c_burt(wechat) ，欢迎交流学习
-- [Github](https://github.com/Orange-ice/ice-ui)
+- [Github](https://github.com/chensheng01/hhhh)
